@@ -46,6 +46,8 @@ export default class TextField extends PureComponent {
     fontSize: PropTypes.number,
     labelFontSize: PropTypes.number,
 
+    inputContainerStyle: PropTypes.number,
+
     tintColor: PropTypes.string,
     textColor: PropTypes.string,
     baseColor: PropTypes.string,
@@ -270,6 +272,7 @@ export default class TextField extends PureComponent {
     let { receivedFocus, focus, focused, error, errored, height, text = '' } = this.state;
     let {
       style,
+      inputContainerStyle,
       label,
       title,
       value,
@@ -392,7 +395,7 @@ export default class TextField extends PureComponent {
 
     return (
       <View onStartShouldSetResponder={ () => true } onResponderRelease={this.onPress}>
-        <Animated.View style={[styles.container, containerStyle]}>
+        <Animated.View style={[styles.container, containerStyle, inputContainerStyle]}>
           {disabled && <Line type='dotted' color={baseColor} />}
 
           <Label {...labelProps}>{label}</Label>
